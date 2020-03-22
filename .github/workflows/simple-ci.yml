@@ -27,7 +27,10 @@ jobs:
           node-version: ${{ matrix.node }}
       - run: node --version
       # npm-check has dependencies with vulnerabilities.
+      - run: git config --global url."https://${{secrets.ACTION_CI}}@github.com".insteadOf ssh://git@github.com
       - run: npm i npm-check -g
       - run: npm --version
       - run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.ACTION_CI}}
       - run: npm run build

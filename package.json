@@ -1,8 +1,8 @@
 {
   "name": "@tufan-io/git-utils",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "private": false,
-  "description": "",
+  "description": "Convenience methods for working with git for tufan code-generation capabilities",
   "keywords": [],
   "homepage": "https://github.com/tufan-io/git-utils#readme",
   "bugs": {
@@ -39,7 +39,7 @@
     "compile:watch": "tsc -w",
     "dep-check": "dependency-check . --no-dev",
     "dependency-upgrade": "run-batch",
-    "docs": "typedoc --plugin typedoc-plugin-markdown --out ./docs/api-md",
+    "docs": "typedoc --options ./typedoc.json",
     "ensure-bins": "which npm-check sort-package-json",
     "format": "tsfmt -r",
     "git-add_": "git add .",
@@ -149,7 +149,6 @@
       "test",
       "no-circular-deps",
       "cloc",
-      "docs",
       "todos",
       "todos-md"
     ],
@@ -199,6 +198,11 @@
       "pre-commit-hook",
       "pre-push-hook",
       "dependency-upgrade"
+    ],
+    "prepublish": [
+      "docs",
+      "no-mods",
+      "secure"
     ]
   }
 }

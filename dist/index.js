@@ -38,9 +38,13 @@ async function getCommitList(dir, depth = 10, fs = _fs) {
 }
 exports.getCommitList = getCommitList;
 /**
+ * Given a git directory, an array of 2-tuples [filename, "modification state"]
+ *
  * In many code generation tasks, it's important to quickly detect if there are
- * any changes to the current git index. Sometimes, it's necessary to detect
- * unstaged changes - to prevent overwriting user initiated changes for example.
+ * any changes to the current git index. This is particularly useful to guarantee
+ * that a generator will not overwrite user generated content. Depending on the
+ * circumstance, it is sometimes acceptable for the modifications to be staged,
+ * and sometimes not.
  *
  * git's detection of modifications is kinda complex, making getting simple
  * mod/no-mod answers a bit convoluted. This function is a simple wrapper that
@@ -57,7 +61,8 @@ async function modList(dir, stagedOk = false, fs = _fs) {
     const permissible = stagedOk ? ["unstaged"] : ["unstaged", "staged"];
     return matrix
         .map(statusMapper)
-        .filter((x) => permissible.includes(x[1]));
+        .filter((x) => permissible.includes(x[1]))
+        .map((x) => ({ filename: x[0], mod: x[2] }));
 }
 exports.modList = modList;
 /**
@@ -105,6 +110,7 @@ var StagetStatus;
  * independent of isomorphic-git
  * @internal
  * @param param0 - element of array returned from statusMatrix
+ * @return [dir, ]
  */
 function statusMapper([filename, headStatus, workDirStatus, stageStatus,]) {
     const status = [headStatus, workDirStatus, stageStatus].join(",");

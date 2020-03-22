@@ -3,8 +3,9 @@
 [![Build status](https://tufan-io.github.io/git-utils/ci/badge/build.svg)](https://github.com/tufan-io/git-utils/actions)
 ![Coverage](https://tufan-io.github.io/git-utils/ci/badge/coverage.svg)
 
-A simple wrapper around isomorphic-git, to provide cross-OS git commands necessary
-for full-featured code generators to work.
+Convenience methods for working with git for tufan code-generation capabilities.
+Uses `isomorphic-git`, to provide OS independence. Exremely useful for full featured
+code generators.
 
 tufan.cloud is a code generator and a registry system. All of which require
 some git interactions. This is a simple wrapper around `isomorphic-git` that

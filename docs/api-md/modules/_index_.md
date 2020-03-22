@@ -1,4 +1,4 @@
-[@tufan-io/git-utils](../README.md) › [Globals](../globals.md) › ["index"](_index_.md)
+[@tufan-io/git-utils - v1.0.0](../README.md) › [Globals](../globals.md) › ["index"](_index_.md)
 
 # Module: "index"
 
@@ -24,7 +24,7 @@
 
 ▸ **getCommitList**(`dir`: string, `depth`: number, `fs`: "fs"): *Promise‹object[]›*
 
-*Defined in [index.ts:26](https://github.com/tufan-io/git-utils/blob/master/src/index.ts#L26)*
+*Defined in [index.ts:26](https://github.com/tufan-io/git-utils/blob/5fb5f55/src/index.ts#L26)*
 
 Similar to `git log --oneline`, meant to help select a recent commit to publish.
 by default, fetches the last 10 commits.
@@ -45,9 +45,9 @@ ___
 
 ###  getRemoteOrigin
 
-▸ **getRemoteOrigin**(`dir`: string, `fs`: "fs"): *Promise‹any›*
+▸ **getRemoteOrigin**(`dir`: string, `fs`: "fs"): *Promise‹string›*
 
-*Defined in [index.ts:11](https://github.com/tufan-io/git-utils/blob/master/src/index.ts#L11)*
+*Defined in [index.ts:11](https://github.com/tufan-io/git-utils/blob/5fb5f55/src/index.ts#L11)*
 
 Get remote url of a git repo
 
@@ -58,19 +58,23 @@ Name | Type | Default | Description |
 `dir` | string | - | git repository directory |
 `fs` | "fs" | _fs | defaults to node.fs, but we are isomorphic.  |
 
-**Returns:** *Promise‹any›*
+**Returns:** *Promise‹string›*
 
 ___
 
 ###  modList
 
-▸ **modList**(`dir`: string, `stagedOk`: boolean, `fs`: "fs"): *Promise‹string[][]›*
+▸ **modList**(`dir`: string, `stagedOk`: boolean, `fs`: "fs"): *Promise‹object[]›*
 
-*Defined in [index.ts:54](https://github.com/tufan-io/git-utils/blob/master/src/index.ts#L54)*
+*Defined in [index.ts:66](https://github.com/tufan-io/git-utils/blob/5fb5f55/src/index.ts#L66)*
+
+Given a git directory, an array of 2-tuples [filename, "modification state"]
 
 In many code generation tasks, it's important to quickly detect if there are
-any changes to the current git index. Sometimes, it's necessary to detect
-unstaged changes - to prevent overwriting user initiated changes for example.
+any changes to the current git index. This is particularly useful to guarantee
+that a generator will not overwrite user generated content. Depending on the
+circumstance, it is sometimes acceptable for the modifications to be staged,
+and sometimes not.
 
 git's detection of modifications is kinda complex, making getting simple
 mod/no-mod answers a bit convoluted. This function is a simple wrapper that
@@ -84,15 +88,15 @@ Name | Type | Default | Description |
 `stagedOk` | boolean | false | whether staged modifications should be ignored, [default=false] |
 `fs` | "fs" | _fs | for isomorphic usecases, defaults to node's fs.  |
 
-**Returns:** *Promise‹string[][]›*
+**Returns:** *Promise‹object[]›*
 
 ___
 
 ###  statusMapper
 
-▸ **statusMapper**(`__namedParameters`: [string, [HeadStatus](../enums/_index_.headstatus.md), [WorkDirStatus](../enums/_index_.workdirstatus.md), [StagetStatus](../enums/_index_.stagetstatus.md)]): *string[]*
+▸ **statusMapper**(`__namedParameters`: [string, [HeadStatus](../enums/_index_.headstatus.md), [WorkDirStatus](../enums/_index_.workdirstatus.md), [StagetStatus](../enums/_index_.stagetstatus.md)]): *[string, string, string]*
 
-*Defined in [index.ts:106](https://github.com/tufan-io/git-utils/blob/master/src/index.ts#L106)*
+*Defined in [index.ts:127](https://github.com/tufan-io/git-utils/blob/5fb5f55/src/index.ts#L127)*
 
 Maps statusMatrix output to a simple form that we want. This function is testable
 independent of isomorphic-git
@@ -105,7 +109,7 @@ Name | Type |
 ------ | ------ |
 `__namedParameters` | [string, [HeadStatus](../enums/_index_.headstatus.md), [WorkDirStatus](../enums/_index_.workdirstatus.md), [StagetStatus](../enums/_index_.stagetstatus.md)] |
 
-**Returns:** *string[]*
+**Returns:** *[string, string, string]*
 
 ___
 
@@ -113,7 +117,7 @@ ___
 
 ▸ **tagList**(`dir`: any, `fs`: "fs"): *Promise‹string[]›*
 
-*Defined in [index.ts:67](https://github.com/tufan-io/git-utils/blob/master/src/index.ts#L67)*
+*Defined in [index.ts:87](https://github.com/tufan-io/git-utils/blob/5fb5f55/src/index.ts#L87)*
 
 **`internal`** 
 

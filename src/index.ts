@@ -8,7 +8,7 @@ import * as GIT from "isomorphic-git";
  * @param dir - git repository directory
  * @param fs - defaults to node.fs, but we are isomorphic.
  */
-export async function getRemoteOrigin(dir: string, fs = _fs) {
+export async function getRemoteOrigin(dir: string, fs = _fs): Promise<string> {
   return GIT.getConfig({ fs, dir, path: "remote.origin.url" });
 }
 
@@ -23,7 +23,15 @@ export async function getRemoteOrigin(dir: string, fs = _fs) {
  * @param depth - number of commits to retrieve [default = 10]
  * @param fs - defaults to node.fs, but we are isomorphic.
  */
-export async function getCommitList(dir: string, depth = 10, fs = _fs) {
+export async function getCommitList(
+  dir: string,
+  depth = 10,
+  fs = _fs,
+): Promise<{
+  author: string;
+  message: string;
+  sha: string;
+}[]> {
   const rawLogs = await GIT.log({ fs, dir, depth });
   return rawLogs.map((entry) => {
     /* istanbul ignore next */
@@ -37,9 +45,13 @@ export async function getCommitList(dir: string, depth = 10, fs = _fs) {
 }
 
 /**
+ * Given a git directory, an array of 2-tuples [filename, "modification state"]
+ *
  * In many code generation tasks, it's important to quickly detect if there are
- * any changes to the current git index. Sometimes, it's necessary to detect
- * unstaged changes - to prevent overwriting user initiated changes for example.
+ * any changes to the current git index. This is particularly useful to guarantee
+ * that a generator will not overwrite user generated content. Depending on the
+ * circumstance, it is sometimes acceptable for the modifications to be staged,
+ * and sometimes not.
  *
  * git's detection of modifications is kinda complex, making getting simple
  * mod/no-mod answers a bit convoluted. This function is a simple wrapper that
@@ -51,12 +63,20 @@ export async function getCommitList(dir: string, depth = 10, fs = _fs) {
  * @param stagedOk - whether staged modifications should be ignored, [default=false]
  * @param fs - for isomorphic usecases, defaults to node's fs.
  */
-export async function modList(dir: string, stagedOk = false, fs = _fs) {
+export async function modList(
+  dir: string,
+  stagedOk = false,
+  fs = _fs,
+): Promise<{
+  filename: string,
+  mod: string
+}[]> {
   const matrix = await GIT.statusMatrix({ fs, dir });
   const permissible = stagedOk ? ["unstaged"] : ["unstaged", "staged"];
   return matrix
     .map(statusMapper)
-    .filter((x) => permissible.includes(x[1]));
+    .filter((x) => permissible.includes(x[1]))
+    .map((x) => ({ filename: x[0], mod: x[2] }));
 }
 
 /**
@@ -64,7 +84,7 @@ export async function modList(dir: string, stagedOk = false, fs = _fs) {
  * @param dir - git repository directory
  * @param fs - defaults to node.fs, but we are isomorphic.
  */
-export async function tagList(dir, fs = _fs) {
+export async function tagList(dir, fs = _fs): Promise<string[]> {
   return await GIT.listTags({ dir, fs });
 }
 
@@ -102,6 +122,7 @@ export enum StagetStatus {
  * independent of isomorphic-git
  * @internal
  * @param param0 - element of array returned from statusMatrix
+ * @return [dir, ]
  */
 export function statusMapper([
   filename,
@@ -113,7 +134,7 @@ export function statusMapper([
     HeadStatus,
     WorkDirStatus,
     StagetStatus,
-  ]) {
+  ]): [string, string, string] {
   const status = [headStatus, workDirStatus, stageStatus].join(",");
   const description = {
     "1,1,1": "unmodified",

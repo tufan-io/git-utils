@@ -7,7 +7,7 @@ import * as _fs from "fs";
  * @param dir - git repository directory
  * @param fs - defaults to node.fs, but we are isomorphic.
  */
-export declare function getRemoteOrigin(dir: string, fs?: typeof _fs): Promise<any>;
+export declare function getRemoteOrigin(dir: string, fs?: typeof _fs): Promise<string>;
 /**
  * Similar to `git log --oneline`, meant to help select a recent commit to publish.
  * by default, fetches the last 10 commits.
@@ -25,9 +25,13 @@ export declare function getCommitList(dir: string, depth?: number, fs?: typeof _
     sha: string;
 }[]>;
 /**
+ * Given a git directory, an array of 2-tuples [filename, "modification state"]
+ *
  * In many code generation tasks, it's important to quickly detect if there are
- * any changes to the current git index. Sometimes, it's necessary to detect
- * unstaged changes - to prevent overwriting user initiated changes for example.
+ * any changes to the current git index. This is particularly useful to guarantee
+ * that a generator will not overwrite user generated content. Depending on the
+ * circumstance, it is sometimes acceptable for the modifications to be staged,
+ * and sometimes not.
  *
  * git's detection of modifications is kinda complex, making getting simple
  * mod/no-mod answers a bit convoluted. This function is a simple wrapper that
@@ -39,7 +43,10 @@ export declare function getCommitList(dir: string, depth?: number, fs?: typeof _
  * @param stagedOk - whether staged modifications should be ignored, [default=false]
  * @param fs - for isomorphic usecases, defaults to node's fs.
  */
-export declare function modList(dir: string, stagedOk?: boolean, fs?: typeof _fs): Promise<string[][]>;
+export declare function modList(dir: string, stagedOk?: boolean, fs?: typeof _fs): Promise<{
+    filename: string;
+    mod: string;
+}[]>;
 /**
  * @internal
  * @param dir - git repository directory
@@ -79,6 +86,7 @@ export declare enum StagetStatus {
  * independent of isomorphic-git
  * @internal
  * @param param0 - element of array returned from statusMatrix
+ * @return [dir, ]
  */
-export declare function statusMapper([filename, headStatus, workDirStatus, stageStatus,]: [string, HeadStatus, WorkDirStatus, StagetStatus]): string[];
+export declare function statusMapper([filename, headStatus, workDirStatus, stageStatus,]: [string, HeadStatus, WorkDirStatus, StagetStatus]): [string, string, string];
 //# sourceMappingURL=index.d.ts.map

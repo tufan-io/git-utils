@@ -38,11 +38,17 @@ test(`getRemoteOrigin`, async (t) => {
 
 test(`modList`, async (t) => {
   const { dir } = t.context as any;
+  // tslint:disable-next-line: tsr-detect-non-literal-fs-filename
+  await fs.writeFile(
+    `${dir}/unstaged-file-test.txt`,
+    `File created for test. Can be deleted`,
+    `utf8`,
+  );
   const result = [
     await modList(dir),
     await modList(dir, true),
   ];
-  t.deepEqual(result, [[], []]);
+  t.snapshot(result);
 });
 
 test(`getCommitList`, async (t) => {

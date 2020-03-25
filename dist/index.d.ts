@@ -1,5 +1,7 @@
 /// <reference types="node" />
 import * as _fs from "fs";
+import * as GIT from "isomorphic-git";
+export declare const git: typeof GIT;
 /**
  * Get remote url of a git repo
  *

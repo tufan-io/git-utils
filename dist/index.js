@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const _fs = require("fs");
 const GIT = require("isomorphic-git");
+exports.git = GIT;
 /**
  * Get remote url of a git repo
  *

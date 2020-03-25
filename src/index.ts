@@ -1,6 +1,7 @@
 import * as _fs from "fs";
 import * as GIT from "isomorphic-git";
 
+export const git = GIT;
 /**
  * Get remote url of a git repo
  *

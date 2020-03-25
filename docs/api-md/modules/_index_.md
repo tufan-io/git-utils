@@ -1,4 +1,4 @@
-[@tufan-io/git-utils - v1.0.0](../README.md) › [Globals](../globals.md) › ["index"](_index_.md)
+[@tufan-io/git-utils - v1.1.0](../README.md) › [Globals](../globals.md) › ["index"](_index_.md)
 
 # Module: "index"
 
@@ -10,6 +10,10 @@
 * [StagetStatus](../enums/_index_.stagetstatus.md)
 * [WorkDirStatus](../enums/_index_.workdirstatus.md)
 
+### Variables
+
+* [git](_index_.md#const-git)
+
 ### Functions
 
 * [getCommitList](_index_.md#getcommitlist)
@@ -18,13 +22,21 @@
 * [statusMapper](_index_.md#statusmapper)
 * [tagList](_index_.md#taglist)
 
+## Variables
+
+### `Const` git
+
+• **git**: *"/Users/sramam/trial/poc/git-utils/node_modules/isomorphic-git/index"* = GIT
+
+*Defined in [index.ts:4](https://github.com/tufan-io/git-utils/blob/e076e95/src/index.ts#L4)*
+
 ## Functions
 
 ###  getCommitList
 
 ▸ **getCommitList**(`dir`: string, `depth`: number, `fs`: "fs"): *Promise‹object[]›*
 
-*Defined in [index.ts:26](https://github.com/tufan-io/git-utils/blob/5fb5f55/src/index.ts#L26)*
+*Defined in [index.ts:27](https://github.com/tufan-io/git-utils/blob/e076e95/src/index.ts#L27)*
 
 Similar to `git log --oneline`, meant to help select a recent commit to publish.
 by default, fetches the last 10 commits.
@@ -47,7 +59,7 @@ ___
 
 ▸ **getRemoteOrigin**(`dir`: string, `fs`: "fs"): *Promise‹string›*
 
-*Defined in [index.ts:11](https://github.com/tufan-io/git-utils/blob/5fb5f55/src/index.ts#L11)*
+*Defined in [index.ts:12](https://github.com/tufan-io/git-utils/blob/e076e95/src/index.ts#L12)*
 
 Get remote url of a git repo
 
@@ -66,7 +78,7 @@ ___
 
 ▸ **modList**(`dir`: string, `stagedOk`: boolean, `fs`: "fs"): *Promise‹object[]›*
 
-*Defined in [index.ts:66](https://github.com/tufan-io/git-utils/blob/5fb5f55/src/index.ts#L66)*
+*Defined in [index.ts:67](https://github.com/tufan-io/git-utils/blob/e076e95/src/index.ts#L67)*
 
 Given a git directory, an array of 2-tuples [filename, "modification state"]
 
@@ -96,7 +108,7 @@ ___
 
 ▸ **statusMapper**(`__namedParameters`: [string, [HeadStatus](../enums/_index_.headstatus.md), [WorkDirStatus](../enums/_index_.workdirstatus.md), [StagetStatus](../enums/_index_.stagetstatus.md)]): *[string, string, string]*
 
-*Defined in [index.ts:127](https://github.com/tufan-io/git-utils/blob/5fb5f55/src/index.ts#L127)*
+*Defined in [index.ts:128](https://github.com/tufan-io/git-utils/blob/e076e95/src/index.ts#L128)*
 
 Maps statusMatrix output to a simple form that we want. This function is testable
 independent of isomorphic-git
@@ -117,7 +129,7 @@ ___
 
 ▸ **tagList**(`dir`: any, `fs`: "fs"): *Promise‹string[]›*
 
-*Defined in [index.ts:87](https://github.com/tufan-io/git-utils/blob/5fb5f55/src/index.ts#L87)*
+*Defined in [index.ts:88](https://github.com/tufan-io/git-utils/blob/e076e95/src/index.ts#L88)*
 
 **`internal`** 
 

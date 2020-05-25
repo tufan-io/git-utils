@@ -91,4 +91,3 @@ export declare enum StagetStatus {
  * @return [dir, ]
  */
 export declare function statusMapper([filename, headStatus, workDirStatus, stageStatus,]: [string, HeadStatus, WorkDirStatus, StagetStatus]): [string, string, string];
-//# sourceMappingURL=index.d.ts.map

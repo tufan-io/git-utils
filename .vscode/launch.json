@@ -30,9 +30,11 @@
       "env": {
         "NODE_ENV": "development"
       },
-      "externalConsole": false,
+      "console": "integratedTerminal",
       "sourceMaps": false,
-      "outDir": null
+      "outFiles": [
+        "${workspaceFolder}/dist/*/.js"
+      ]
     },
     {
       "name": "Attach",
@@ -42,7 +44,9 @@
       "address": "localhost",
       "restart": false,
       "sourceMaps": false,
-      "outDir": null,
+      "outFiles": [
+        "${workspaceFolder}/dist/*/.js"
+      ],
       "localRoot": "${workspaceRoot}",
       "remoteRoot": null
     },
@@ -50,10 +54,12 @@
       "name": "Attach to Process",
       "type": "node",
       "request": "attach",
-      "processId": "${command.PickProcess}",
+      "processId": "${command:PickProcess}",
       "port": 5858,
       "sourceMaps": false,
-      "outDir": null
+      "outFiles": [
+        "${workspaceFolder}/dist/*/.js"
+      ]
     }
   ]
 }

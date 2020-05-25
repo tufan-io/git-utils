@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.statusMapper = exports.StagetStatus = exports.WorkDirStatus = exports.HeadStatus = exports.tagList = exports.modList = exports.getCommitList = exports.getRemoteOrigin = exports.git = void 0;
 const _fs = require("fs");
 const GIT = require("isomorphic-git");
 exports.git = GIT;

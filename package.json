@@ -1,6 +1,6 @@
 {
   "name": "@tufan-io/git-utils",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "private": false,
   "description": "Convenience methods for working with git for tufan code-generation capabilities",
   "keywords": [],
@@ -179,10 +179,6 @@
       "sort-package-json",
       "no-circular-deps",
       "staged-mods-ok"
-    ],
-    "postversion": [
-      "docs",
-      "no-mods"
     ],
     "pre-push-hook": [
       "secure",

@@ -1,3 +1,8 @@
+<a name="1.1.2"></a>
+## [1.1.2](https://github.com/tufan-io/git-utils/compare/1.1.1...1.1.2) (2020-05-25)
+
+
+
 <a name="1.1.1"></a>
 ## 1.1.1 (2020-05-25)
 

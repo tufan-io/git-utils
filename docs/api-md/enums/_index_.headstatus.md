@@ -1,4 +1,4 @@
-[@tufan-io/git-utils - v1.1.0](../README.md) › [Globals](../globals.md) › ["index"](../modules/_index_.md) › [HeadStatus](_index_.headstatus.md)
+[@tufan-io/git-utils - v1.1.2](../README.md) › [Globals](../globals.md) › ["index"](../modules/_index_.md) › [HeadStatus](_index_.headstatus.md)
 
 # Enumeration: HeadStatus
 
@@ -19,7 +19,7 @@ Convenience enum
 
 • **ABSENT**: = 0
 
-*Defined in [index.ts:98](https://github.com/tufan-io/git-utils/blob/e076e95/src/index.ts#L98)*
+*Defined in [index.ts:98](https://github.com/tufan-io/git-utils/blob/1e41f91/src/index.ts#L98)*
 
 ___
 
@@ -27,4 +27,4 @@ ___
 
 • **PRESENT**: = 1
 
-*Defined in [index.ts:99](https://github.com/tufan-io/git-utils/blob/e076e95/src/index.ts#L99)*
+*Defined in [index.ts:99](https://github.com/tufan-io/git-utils/blob/1e41f91/src/index.ts#L99)*

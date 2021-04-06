@@ -27,12 +27,14 @@ export async function getRemoteOrigin(dir: string, fs = _fs): Promise<string> {
 export async function getCommitList(
   dir: string,
   depth = 10,
-  fs = _fs,
-): Promise<{
-  author: string;
-  message: string;
-  sha: string;
-}[]> {
+  fs = _fs
+): Promise<
+  {
+    author: string;
+    message: string;
+    sha: string;
+  }[]
+> {
   const rawLogs = await GIT.log({ fs, dir, depth });
   return rawLogs.map((entry) => {
     /* istanbul ignore next */
@@ -67,11 +69,13 @@ export async function getCommitList(
 export async function modList(
   dir: string,
   stagedOk = false,
-  fs = _fs,
-): Promise<{
-  filename: string,
-  mod: string
-}[]> {
+  fs = _fs
+): Promise<
+  {
+    filename: string;
+    mod: string;
+  }[]
+> {
   const matrix = await GIT.statusMatrix({ fs, dir });
   const permissible = stagedOk ? ["unstaged"] : ["unstaged", "staged"];
   return matrix
@@ -85,7 +89,7 @@ export async function modList(
  * @param dir - git repository directory
  * @param fs - defaults to node.fs, but we are isomorphic.
  */
-export async function tagList(dir, fs = _fs): Promise<string[]> {
+export async function tagList(dir: string, fs = _fs): Promise<string[]> {
   return await GIT.listTags({ dir, fs });
 }
 
@@ -130,16 +134,14 @@ export function statusMapper([
   headStatus,
   workDirStatus,
   stageStatus,
-]: [
-    string,
-    HeadStatus,
-    WorkDirStatus,
-    StagetStatus,
-  ]): [string, string, string] {
+]: [string, HeadStatus, WorkDirStatus, StagetStatus]): [
+  string,
+  string,
+  string
+] {
   const status = [headStatus, workDirStatus, stageStatus].join(",");
   const description = {
     "1,1,1": "unmodified",
-    // tslint:disable-next-line: object-literal-sort-keys
     "0,2,2": "added, staged",
     "1,2,2": "modified, staged",
     "1,0,0": "deleted, staged",

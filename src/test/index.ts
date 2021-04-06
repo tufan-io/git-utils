@@ -1,10 +1,20 @@
-
 import test from "ava";
 import * as fs from "fs-extra";
 import * as git from "isomorphic-git";
 import * as http from "isomorphic-git/http/node";
-import { getCommitList, getRemoteOrigin, modList, statusMapper, tagList } from "..";
+import {
+  getCommitList,
+  getRemoteOrigin,
+  modList,
+  statusMapper,
+  tagList,
+} from "..";
 
+type TestContext = {
+  dir: string;
+};
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 test.before(async (t: any) => {
   const dir = `${__dirname}/../../.tmp/delay`;
   const url = `https://github.com/sindresorhus/delay.git`;
@@ -31,34 +41,30 @@ test(`statusMapper`, async (t) => {
 });
 
 test(`getRemoteOrigin`, async (t) => {
-  const { dir } = t.context as any;
+  const { dir } = t.context as TestContext;
   const url = await getRemoteOrigin(dir);
   t.snapshot(url);
 });
 
 test(`modList`, async (t) => {
-  const { dir } = t.context as any;
-  // tslint:disable-next-line: tsr-detect-non-literal-fs-filename
+  const { dir } = t.context as TestContext;
   await fs.writeFile(
     `${dir}/unstaged-file-test.txt`,
     `File created for test. Can be deleted`,
-    `utf8`,
+    `utf8`
   );
-  const result = [
-    await modList(dir),
-    await modList(dir, true),
-  ];
+  const result = [await modList(dir), await modList(dir, true)];
   t.snapshot(result);
 });
 
 test(`getCommitList`, async (t) => {
-  const { dir } = t.context as any;
+  const { dir } = t.context as TestContext;
   const mods = await getCommitList(dir);
   t.is(mods.length, 10);
 });
 
 test(`tagList`, async (t) => {
-  const { dir } = t.context as any;
+  const { dir } = t.context as TestContext;
   const tags = await tagList(dir);
   t.true(13 <= tags.length); // 13 at the time of test creation
 });

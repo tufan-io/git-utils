@@ -54,7 +54,7 @@ export declare function modList(dir: string, stagedOk?: boolean, fs?: typeof _fs
  * @param dir - git repository directory
  * @param fs - defaults to node.fs, but we are isomorphic.
  */
-export declare function tagList(dir: any, fs?: typeof _fs): Promise<string[]>;
+export declare function tagList(dir: string, fs?: typeof _fs): Promise<string[]>;
 /**
  * Convenience enum
  *
@@ -90,4 +90,8 @@ export declare enum StagetStatus {
  * @param param0 - element of array returned from statusMatrix
  * @return [dir, ]
  */
-export declare function statusMapper([filename, headStatus, workDirStatus, stageStatus,]: [string, HeadStatus, WorkDirStatus, StagetStatus]): [string, string, string];
+export declare function statusMapper([filename, headStatus, workDirStatus, stageStatus,]: [string, HeadStatus, WorkDirStatus, StagetStatus]): [
+    string,
+    string,
+    string
+];

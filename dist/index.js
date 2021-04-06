@@ -118,7 +118,6 @@ function statusMapper([filename, headStatus, workDirStatus, stageStatus,]) {
     const status = [headStatus, workDirStatus, stageStatus].join(",");
     const description = {
         "1,1,1": "unmodified",
-        // tslint:disable-next-line: object-literal-sort-keys
         "0,2,2": "added, staged",
         "1,2,2": "modified, staged",
         "1,0,0": "deleted, staged",

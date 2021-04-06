@@ -154,7 +154,8 @@
       "no-circular-deps",
       "cloc",
       "todos",
-      "todos-md"
+      "todos-md",
+      "docs"
     ],
     "qt": [
       "compile",
@@ -169,7 +170,6 @@
       "staged-mods-ok"
     ],
     "prepublishOnly": [
-      "docs",
       "no-mods"
     ],
     "pre-commit-hook": [

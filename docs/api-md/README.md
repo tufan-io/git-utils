@@ -1,6 +1,6 @@
-[@tufan-io/git-utils - v1.1.2](README.md) › [Globals](globals.md)
+[@tufan-io/git-utils - v1.1.3](README.md) › [Globals](globals.md)
 
-# @tufan-io/git-utils - v1.1.2
+# @tufan-io/git-utils - v1.1.3
 
 # @tufan/git-utils
 

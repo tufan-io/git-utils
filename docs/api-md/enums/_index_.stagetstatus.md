@@ -1,4 +1,4 @@
-[@tufan-io/git-utils - v1.1.4](../README.md) › [Globals](../globals.md) › ["index"](../modules/_index_.md) › [StagetStatus](_index_.stagetstatus.md)
+[@tufan-io/git-utils - v1.1.5](../README.md) › [Globals](../globals.md) › ["index"](../modules/_index_.md) › [StagetStatus](_index_.stagetstatus.md)
 
 # Enumeration: StagetStatus
 
@@ -21,7 +21,7 @@ Convenience enum
 
 • **ABSENT**: = 0
 
-*Defined in [index.ts:119](https://github.com/tufan-io/git-utils/blob/8f44a65/src/index.ts#L119)*
+*Defined in [index.ts:119](https://github.com/tufan-io/git-utils/blob/e2925b0/src/index.ts#L119)*
 
 ___
 
@@ -29,7 +29,7 @@ ___
 
 • **DIFFERENT_WORKDIR**: = 3
 
-*Defined in [index.ts:122](https://github.com/tufan-io/git-utils/blob/8f44a65/src/index.ts#L122)*
+*Defined in [index.ts:122](https://github.com/tufan-io/git-utils/blob/e2925b0/src/index.ts#L122)*
 
 ___
 
@@ -37,7 +37,7 @@ ___
 
 • **IDENTICAL_HEAD**: = 1
 
-*Defined in [index.ts:120](https://github.com/tufan-io/git-utils/blob/8f44a65/src/index.ts#L120)*
+*Defined in [index.ts:120](https://github.com/tufan-io/git-utils/blob/e2925b0/src/index.ts#L120)*
 
 ___
 
@@ -45,4 +45,4 @@ ___
 
 • **IDENTICAL_WORKDIR**: = 2
 
-*Defined in [index.ts:121](https://github.com/tufan-io/git-utils/blob/8f44a65/src/index.ts#L121)*
+*Defined in [index.ts:121](https://github.com/tufan-io/git-utils/blob/e2925b0/src/index.ts#L121)*

@@ -1,4 +1,4 @@
-[@tufan-io/git-utils - v1.1.5](../README.md) › [Globals](../globals.md) › ["index"](../modules/_index_.md) › [WorkDirStatus](_index_.workdirstatus.md)
+[@tufan-io/git-utils - v1.1.6](../README.md) › [Globals](../globals.md) › ["index"](../modules/_index_.md) › [WorkDirStatus](_index_.workdirstatus.md)
 
 # Enumeration: WorkDirStatus
 
@@ -20,7 +20,7 @@ Convenience enum
 
 • **ABSENT**: = 0
 
-*Defined in [index.ts:110](https://github.com/tufan-io/git-utils/blob/e2925b0/src/index.ts#L110)*
+*Defined in [index.ts:110](https://github.com/tufan-io/git-utils/blob/bf8fcea/src/index.ts#L110)*
 
 ___
 
@@ -28,7 +28,7 @@ ___
 
 • **DIFFERENT**: = 2
 
-*Defined in [index.ts:112](https://github.com/tufan-io/git-utils/blob/e2925b0/src/index.ts#L112)*
+*Defined in [index.ts:112](https://github.com/tufan-io/git-utils/blob/bf8fcea/src/index.ts#L112)*
 
 ___
 
@@ -36,4 +36,4 @@ ___
 
 • **IDENTICAL**: = 1
 
-*Defined in [index.ts:111](https://github.com/tufan-io/git-utils/blob/e2925b0/src/index.ts#L111)*
+*Defined in [index.ts:111](https://github.com/tufan-io/git-utils/blob/bf8fcea/src/index.ts#L111)*

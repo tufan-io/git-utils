@@ -135,8 +135,8 @@
   },
   "devDependencies": {
     "@tufan-io/simple-ci": "^0.4.19",
-    "typedoc": "^0.17.7",
-    "typedoc-plugin-markdown": "^2.2.17"
+    "typedoc": "^0.20.35",
+    "typedoc-plugin-markdown": "^3.7.1"
   },
   "engines": {
     "node": ">=13.0.0"
@@ -153,8 +153,7 @@
       "no-circular-deps",
       "cloc",
       "todos",
-      "todos-md",
-      "docs"
+      "todos-md"
     ],
     "qt": [
       "compile",
